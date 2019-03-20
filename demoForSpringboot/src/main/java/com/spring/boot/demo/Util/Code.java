@@ -8,7 +8,8 @@ import java.net.URLDecoder;
 public class Code {
 
         public static String CodeChange(HttpServletRequest request, HttpServletResponse response) throws IOException{
-
+            org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger("info");
+            logger.info("CodeChange-Start");
             request.setCharacterEncoding("utf-8");
             response.setContentType("text/html;charset=utf-8");
             String param = new String(StreamResolve.InputStreamTOByte(request.getInputStream()),"utf-8");
@@ -17,6 +18,10 @@ public class Code {
         }
 
     public static String replace(String outBuffer){
+
+        org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger("info");
+        logger.info("replace-Start");
+
         String data = outBuffer.toString();
         try{
             data = data.replaceAll("%(?![0-9a-fA-F]{2})", "%25");
